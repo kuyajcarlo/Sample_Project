@@ -1,0 +1,27 @@
+const { createApp } = Vue;
+
+createApp({
+  data() {
+    return {
+      images: [
+        'images/pic1.jpg',
+        'images/pic2.jpg',
+        'images/pic3.jpg'
+      ],
+      name: '',
+      message: '',
+      comments: []
+    };
+  },
+  methods: {
+    addComment() {
+      this.comments.push({
+        id: Date.now(),
+        name: this.name,
+        message: this.message
+      });
+      this.name = '';
+      this.message = '';
+    }
+  }
+}).mount('#app');
