@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>John Carlo | Personal Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/mystyle.css">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+
+<header>
+  <h1>John Carlo Baracena</h1>
+  <p>BSIT Student | Aspiring Entrepreneur</p>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#guestbook">Guestbook</a>
+    <a href="resources.html">Resources</a>
+  </nav>
+</header>
+
+<main id="app">
+
+  <!-- About Section -->
+  <section id="about" class="card">
+    <h2>About Me</h2>
+    <img src="images/profile.jpg" alt="John Carlo Baracena" class="profile-pic">
+
+    <p>
+      <strong>Course:</strong> BSIT<br>
+      <strong>Experience:</strong> JavaScript, Python, SQL<br>
+      <strong>Interests:</strong> Gaming, Badminton, Cycling<br>
+      <strong>Goal:</strong> Successful Entrepreneur
+    </p>
+  </section>
+
+  <!-- Vue Gallery -->
+  <section id="gallery" class="card">
+    <h2>Picture Gallery</h2>
+
+    <div class="gallery-grid">
+      <img v-for="img in images" :src="img" :key="img">
+    </div>
+  </section>
+
+  <!-- Vue Guestbook -->
+  <section id="guestbook" class="card">
+    <h2>Survey / Guestbook</h2>
+
+    <form @submit.prevent="addComment">
+      <input type="text" v-model="name" placeholder="Your name" required>
+      <textarea v-model="message" placeholder="Your message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+
+    <ul class="comments">
+      <li v-for="c in comments" :key="c.id">
+        <strong>{{ c.name }}</strong>: {{ c.message }}
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 John Carlo Baracena</p>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>
